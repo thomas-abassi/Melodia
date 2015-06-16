@@ -6,7 +6,7 @@
 var tempo = 1;
 var nbSamples = 12;
 var C0 = 16.35;
-var nbOctaves = 8;
+var nbOctaves = 10;
 
 var level = 0;
 var mulPrime = 2;
@@ -61,8 +61,9 @@ function getLevelAndStep(frequency) {
 
 function getValue(frequency) {
     for(i = 0; i <= frequency.level; i++) {
-        frequency.value += Math.sin(Math.PI * (frequency.step % getPrime(i)) / getPrime(i)) / getPrime(i);
+        frequency.value += Math.sin(Math.PI * (frequency.step % getPrime(i)) / getPrime(i));
     }
+    frequency.value /= level + 1;
     return frequency;
 }
 
