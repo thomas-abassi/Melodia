@@ -1,0 +1,25 @@
+{
+  "name": "Melodia",
+  "version": "1.0.0",
+  "description": "Melodia is a evolutionary serie without redundancy applied to sound frequencies.",
+  "author": {
+    "name": "Thomas ABASSI",
+    "email": "thomas.abassi.ta@gmail.com"
+  },
+  "homepage": "http://melodia-betthefuture.rhcloud.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thomas-abassi/Melodia"
+  },
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "express": "~3.4.4"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+  "private": true,
+  "main": "server.js"
+}
