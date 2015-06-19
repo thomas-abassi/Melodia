@@ -3,10 +3,11 @@
 // License: CC0 1.0 Universal
 
 //  Model
-var tempo = 1;
-var nbSamples = 12;
+var tempo = 4;
+var nbSamples = 3;
 var C0 = 16.35;
 var nbOctaves = 10;
+var minParams = 0;
 
 var level = 0;
 var mulPrime = 2;
@@ -47,16 +48,27 @@ function getPrime(ind) {
 }
 
 function getLevelAndStep(frequency) {
-    frequency.step = frequency.time - (sumPrime - mulPrime);
+    if(frequency.time >= sumPrime - mulPrime) {
+        frequency.step = frequency.time - (sumPrime - mulPrime);
+    } else {
+        frequency.step = frequency.time;
+        frequency.level = minParams - 1;
+        return frequency;
+    }
     while(true) {
-        if(sumPrime > frequency.time) {
-            break;
+        if(sumPrime > frequency.time && frequency.level >= minParams - 1) {
+            return frequency;
         }
-        frequency.step = frequency.time - sumPrime;
+        if(frequency.time >= sumPrime) {
+            frequency.step = frequency.time - sumPrime;
+        } else {
+            frequency.step = frequency.time;
+            frequency.level = minParams - 1;
+            return frequency;
+        }
         mulPrime *= getPrime(++frequency.level);
         sumPrime += mulPrime;
     }
-    return frequency;
 }
 
 function getValue(frequency) {
