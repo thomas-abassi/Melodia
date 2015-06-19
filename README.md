@@ -7,7 +7,7 @@ Melodia is a evolutionary serie without redundancy applied to sound frequencies.
 - `mel(level, step) = sum(i = 0 .. level) { sin(π * mod(step, prem(i)) / prem(i)) } / (level + 1)`
 
 ## Application
-Sound frequency is computed by `frequency = (2 ^ mel(level, step) * nbOctaves) * C0` with C0 = 16.35, nbOctaves = 10 and a sampling rate of 1/12. Time reference is the numer of seconds from 1/1/70.
+Sound frequency is computed by `frequency = (2 ^ mel(level, step) * nbOctaves) * C0` with C0 = 16.35, nbOctaves = 10. Time reference is the numer of seconds from 1/1/70 with 4 ticks per seconds and 3 samples for each.
 
 ## Implementation
 It has been implemented in JavaScript and use [timber.js] to generate sound frequencies.
